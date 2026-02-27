@@ -1,0 +1,26 @@
+;; macOS Sandbox (Seatbelt) Policy for MCP Server
+;; Use with: sandbox-exec -f policy.sb python secure_server.py
+
+(version 1)
+(deny default)
+
+;; 1. Allow the process to start and communicate
+(allow process-exec)
+(allow sysctl-read)
+(allow signal)
+
+;; 2. Allow reading Python libraries and system files required for runtime
+(allow file-read* (subpath "/usr/lib"))
+(allow file-read* (subpath "/System/Library"))
+(allow file-read* (subpath "/Library/Python"))
+(allow file-read-metadata (subpath "/"))
+
+;; 3. Workspace Specific Permissions
+;; Update these paths if your project location changes
+(allow file-read* (subpath "/Users/apple/Documents/My Code/mcp_security"))
+
+;; 4. HARDENING: Explicitly deny access to sensitive data (even if path anchoring fails)
+(deny file-read* (subpath "/Users/apple/Documents/My Code/mcp_security/data/sensitive"))
+
+;; 5. STDOUT/STDERR for communication
+(allow file-read* file-write* (list "/dev/stdin" "/dev/stdout" "/dev/stderr"))

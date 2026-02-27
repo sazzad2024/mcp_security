@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Data and Secrets (Prevent accidental upload of lab secrets)
+data/sensitive/
+*.csv
+*.env
+output_manual.txt
+final_output.txt
+output.txt
+
+# OS and IDE
+.DS_Store
+.vscode/
+.idea/
