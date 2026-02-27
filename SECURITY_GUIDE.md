@@ -20,7 +20,7 @@ The server utilizes `os.path.abspath` to resolve all symbolic links and relative
 - **Rate Limiting**: A global cooldown is enforced between tool executions to mitigate automated brute-force attempts.
 
 ### System Layer: Hardening
-- **Process Isolation (Sandbox)**: The macOS Seatbelt policy (`policy.sb`) provides a final safety net at the kernel level, denying file-read access to sensitive directories even if the Python process is compromised.
+- **Process Isolation (Sandbox)**: The macOS Seatbelt policy (`config/policy.sb`) provides a final safety net at the kernel level, denying file-read access to sensitive directories even if the Python process is compromised.
 - **Containerization (Docker)**: The service is designed to run in a "Distroless-style" container where sensitive data simply does not exist in the filesystem, creating a physical "Air Gap."
 
 ## 3. Deployment Recommendations

@@ -13,11 +13,12 @@ This project implements a multi-layered defense strategy (**Defense-in-Depth**):
 
 ## 🏗️ Project Structure
 
-- `secure_server.py`: Hardened MCP server implementation featuring advanced security decorators.
-- `vulnerable_server.py`: Instructional reference for common MCP security pitfalls.
+- `src/secure_server.py`: Hardened MCP server implementation featuring advanced security decorators.
+- `src/vulnerable_server.py`: Instructional reference for common MCP security pitfalls.
+- `config/policy.sb`: macOS-specific security policy for hardened local execution.
 - `Dockerfile`: Production-ready container configuration using non-root localized users.
-- `policy.sb`: macOS-specific security policy for hardened local execution.
-- `tests/`: Automated security validation suites (formerly `attacker_demo.py`).
+- `data/`: Sample data distribution directory.
+- `tests/`: Automated security validation suites.
 
 ## 🚀 Getting Started
 
@@ -34,12 +35,12 @@ pip install -r requirements.txt
 
 ### Running the Secure Server
 ```bash
-python secure_server.py
+python src/secure_server.py
 ```
 
 ### Running with OS Hardening (macOS)
 ```bash
-sandbox-exec -f policy.sb python secure_server.py
+sandbox-exec -f config/policy.sb python src/secure_server.py
 ```
 
 ### Containerized Deployment

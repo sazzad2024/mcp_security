@@ -15,8 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application source code and safe data distributions
 # Note: Sensitive data is intentionally excluded from the build context
-COPY --chown=mcpuser:mcpuser secure_server.py .
-COPY --chown=mcpuser:mcpuser vulnerable_server.py . 
+COPY --chown=mcpuser:mcpuser src/ ./src/
+COPY --chown=mcpuser:mcpuser config/ ./config/
 COPY --chown=mcpuser:mcpuser data/reports/ ./data/reports/
 
 # Switch to non-root user
@@ -26,4 +26,4 @@ USER mcpuser
 EXPOSE 8000
 
 # Execute server
-CMD ["python", "secure_server.py"]
+CMD ["python", "src/secure_server.py"]

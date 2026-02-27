@@ -1,5 +1,5 @@
 ;; macOS Sandbox (Seatbelt) Policy for MCP Server
-;; Use with: sandbox-exec -f policy.sb python secure_server.py
+;; Use with: sandbox-exec -f config/policy.sb python src/secure_server.py
 
 (version 1)
 (deny default)
